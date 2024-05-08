@@ -32,8 +32,8 @@ minimumCircularSweep = toRad(0.01);
 maximumCircularSweep = toRad(90);
 allowHelicalMoves = true;
 // Roby (from Masso Post)
-//allowedCircularPlanes = 1 << PLANE_XY; // allow only XY circular motion
 allowedCircularPlanes = undefined; // allow any circular motion
+//allowedCircularPlanes = 1 << PLANE_XY; // allow only XY circular motion
 
 // user-defined properties
 properties = {
@@ -136,8 +136,7 @@ properties = {
       {title:"G53", id:"G53"},
       {title:"Clearance Height", id:"clearanceHeight"}
     ],
-    // Roby (default to Clearange Height)
-    value: "Clearance Height",
+    value: "G53",
     scope: "post"
   },
   useInverseTime: {
