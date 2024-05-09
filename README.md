@@ -1,5 +1,7 @@
 # Modified Fusion UCCNC Post Libraries
 
+==USE AT YOUR OWN RISK! THIS LIBRARY HAS BEEN PUBLISHED FOR TESTING PURPOSES WITH THE INTENTION OF PUSHING THESE CHANGES UPSTREAM ONCE TESTED==
+
 ## uccnc-circular.cps
 
 - Circular moves (G2/G3) are enabled in all planes not just PLANE_XY which is the default (allowedCircularPlanes = undefined).
