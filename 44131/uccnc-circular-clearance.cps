@@ -997,8 +997,9 @@ function validateCommonParameters() {
     var msg = "-Attention- Property 'Safe Retracts' is set to 'Clearance Height'." + EOL +
       "Ensure the clearance height will clear the part and or fixtures." + EOL +
       "Raise the Z-axis to a safe height before starting the program.";
-    warning(msg);
-    writeComment(msg);
+    // Roby #6
+    //warning(msg);
+    //writeComment(msg);
   }
 }
 
