@@ -137,7 +137,7 @@ properties = {
       {title:"G53", id:"G53"},
       {title:"Clearance Height", id:"clearanceHeight"}
     ],
-    value: "G53",
+    value: "clearanceHeight",
     scope: "post"
   },
   useInverseTime: {
