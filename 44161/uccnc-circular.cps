@@ -31,7 +31,9 @@ maximumCircularRadius = spatial(1000, MM);
 minimumCircularSweep = toRad(0.01);
 maximumCircularSweep = toRad(90);
 allowHelicalMoves = true;
-allowedCircularPlanes = 1 << PLANE_XY; // allow only XY circular motion
+// Roby #1/6 (source: Masso Post)
+allowedCircularPlanes = undefined; // allow any circular motion
+//allowedCircularPlanes = 1 << PLANE_XY; // allow only XY circular motion
 highFeedrate = (unit == MM) ? 5000 : 200;
 
 // user-defined properties
@@ -338,7 +340,8 @@ function onOpen() {
   if (!getProperty("separateWordsWithSpace")) {
     setWordSeparator("");
   }
-  gPlaneModal.disable();
+// Roby #2/6 (source: Masso Post)
+// gPlaneModal.disable();
 
   writeComment(programName);
   writeComment(programComment);
@@ -348,8 +351,10 @@ function onOpen() {
     warning(localize("4th axis operations detected. Make sure that your WCS origin is placed on the rotary axis."));
   }
 
+  // Roby #3/6 (source: Masso Post)
+  writeBlock(gAbsIncModal.format(90), gFeedModeModal.format(94), gPlaneModal.format(17));
   // absolute coordinates and feed per min
-  writeBlock(gAbsIncModal.format(90));
+  //writeBlock(gAbsIncModal.format(90));
   validateCommonParameters();
 }
 
@@ -397,8 +402,10 @@ function onSection() {
     }
   }
 
+  // Roby #4/6 (source: Masso Post)
+  writeBlock(gPlaneModal.format(17), gAbsIncModal.format(90), gFeedModeModal.format(94));
   // Output modal commands here
-  writeBlock(gAbsIncModal.format(90), gFeedModeModal.format(94));
+  //writeBlock(gAbsIncModal.format(90), gFeedModeModal.format(94));
 
   // wcs
   if (insertToolCall) { // force work offset when changing tool
@@ -748,6 +755,8 @@ function onCommand(command) {
 }
 
 function onSectionEnd() {
+  // Roby #5/6 (source: Masso Post)
+  writeBlock(gPlaneModal.format(17));
   if (!isLastSection()) {
     if (getNextSection().getTool().coolant != tool.coolant) {
       setCoolant(COOLANT_OFF);
@@ -1001,8 +1010,9 @@ function validateCommonParameters() {
     var msg = "-Attention- Property 'Safe Retracts' is set to 'Clearance Height'." + EOL +
       "Ensure the clearance height will clear the part and or fixtures." + EOL +
       "Raise the Z-axis to a safe height before starting the program.";
-    warning(msg);
-    writeComment(msg);
+    // Roby #6/6
+    //warning(msg);
+    //writeComment(msg);
   }
 }
 
